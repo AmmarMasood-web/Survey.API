@@ -1,15 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Serilog;
 using Survey.API.Interfaces;
 using Survey.API.RequestDTOs;
 using Survey.API.ResponseDTOs;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SurveyAPI.Services;
 public class AuthenticationService : IAuthentication

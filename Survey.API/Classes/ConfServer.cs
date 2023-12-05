@@ -1,18 +1,10 @@
-﻿using Genesyslab.Platform.Commons.Protocols;
-using Genesyslab.Platform.Configuration.Protocols;
-using Genesyslab.Platform.Outbound.Protocols;
-using Genesyslab.Platform.Outbound.Protocols.OutboundServer.Events;
-using Genesyslab.Platform.Outbound.Protocols.OutboundServer.Requests;
-using Serilog;
+﻿using Genesyslab.Platform.Configuration.Protocols;
 using Survey.API.CLasses;
-using Survey.API.Helpers;
-using static Genesyslab.Configuration.PsdkCustomization;
 using Endpoint = Genesyslab.Platform.Commons.Protocols.Endpoint;
 
 namespace Survey.API.Classes;
 
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using System;
 
 public class ConfServer

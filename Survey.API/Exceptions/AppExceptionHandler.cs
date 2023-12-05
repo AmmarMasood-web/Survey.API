@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using SurveyAPI.Exceptions;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Survey.API.Exceptions
 {

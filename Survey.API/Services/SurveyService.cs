@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Survey.API.Classes;
 using Survey.API.Database;
-using Survey.API.Helpers;
 using Survey.API.Interfaces;
 using Survey.API.Models;
 using Survey.API.RequestDTOs;

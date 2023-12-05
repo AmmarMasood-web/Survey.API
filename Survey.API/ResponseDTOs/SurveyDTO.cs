@@ -1,5 +1,4 @@
-﻿using Survey.API.Models;
-using Survey.API.RequestDTOs;
+﻿using Survey.API.RequestDTOs;
 
 namespace Survey.API.ResponseDTOs;
 public class SurveyDTO

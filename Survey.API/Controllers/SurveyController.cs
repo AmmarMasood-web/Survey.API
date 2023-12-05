@@ -1,15 +1,9 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Survey.API.Database;
 using Survey.API.Interfaces;
 using Survey.API.RequestDTOs;
-using System;
-using System.Dynamic;
-using System.Threading.Tasks;
 
 namespace SurveyBackend.API.Controllers
 {

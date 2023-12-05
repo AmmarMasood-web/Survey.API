@@ -1,5 +1,4 @@
 global using Serilog;
-global using ILogger = Serilog.ILogger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +6,6 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Serilog.Events;
 using Serilog.Formatting.Json;
-using Survey.API.Classes;
 using Survey.API.Database;
 using Survey.API.Exceptions;
 using Survey.API.Helpers;

@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NanoidDotNet;
 using Newtonsoft.Json;
-using Survey.API.Classes;
-using Survey.API.CLasses;
-using Survey.API.Helpers;
 using Survey.API.Interfaces;
-using Survey.API.Models;
 using Survey.API.RequestDTOs;
 
 namespace SurveyAPI.API.Controllers;

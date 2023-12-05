@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Survey.API.ResponseDTOs;
+﻿namespace Survey.API.ResponseDTOs;
 public class AuthenticationDTO
 {
     public string Token { get; set; } = string.Empty;
