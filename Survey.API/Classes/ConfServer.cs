@@ -23,6 +23,7 @@ public class ConfServer
     private int _sessionId;
     private string _passKey;
     private string _app_name;
+    private string _role_name;
 
     public ConfServer(IConfiguration configuration)
     {
@@ -32,6 +33,7 @@ public class ConfServer
         _sessionId = 0;
         _passKey = confSettings["EnKey"]!;
         _app_name = confSettings["Application_Name"]!;
+        _role_name = confSettings["RoleName"]!;
     }
 
     public bool ConnectionOpen(string username, string password)
@@ -53,15 +55,27 @@ public class ConfServer
             return false;
         }
     }
+
+    public void CloseConnection()
+    {
+        try
+        {
+            Log.Information("CloseConnection Request");
+            _protocol.Close();
+        }
+        catch (Exception ex)
+        {
+            Log.Error("CloseConnection Error: " + ex.ToString());
+        }
+    }
+
     public bool RequestCampaignAccessXML(string username)
     {
         try
         {
             string DBID = RequestCFGPersonDBID(username);
             Log.Information("RequestCampaignAccessXML");
-            //string rolename = ConfigurationManager.AppSettings["RoleName"].ToString();
-            /// to do
-            string rolename = "API_Auth";
+            string rolename = _role_name;
             KeyValueCollection filter = new KeyValueCollection();
             filter.Add("name", rolename);
             RequestReadObjects requestReadPerson = RequestReadObjects.Create((int)CfgObjectType.CFGRole, filter);

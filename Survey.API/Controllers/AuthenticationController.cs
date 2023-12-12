@@ -33,8 +33,8 @@ public class AuthenticationController : ControllerBase
     {
         try
         {
-            Log.Debug("Generating Login Token with confServer with nano id: " + nanoId.ApplicationId);
             ConfServer confServer = new ConfServer(this._configuration);
+            Log.Debug("Generating Login Token with confServer with nano id: " + nanoId.ApplicationId);
             var configSettingSection = _configuration.GetSection("configServer");
             string PasswordKey = configSettingSection["EnKey"]!.ToString();
             request.Password = DESEncryption.Encrypt(request.Password, PasswordKey);
@@ -45,7 +45,6 @@ public class AuthenticationController : ControllerBase
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, request.Username),
-                        // Add other claims as needed
                     };
                     var tokenConfig = _configuration.GetSection("tokenConfiguration");
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfig.GetValue<string>("tokenSecret")!));
@@ -58,7 +57,8 @@ public class AuthenticationController : ControllerBase
                         expires: DateTime.UtcNow.AddMinutes(30),
                         signingCredentials: creds
                     );
-                    Log.Debug("{0} :", nanoId.ApplicationId + "Successfully Signed in ConfServer Sending token... ");
+                    Log.Debug("{0} :", nanoId.ApplicationId + " ==> Successfully Signed in ConfServer Sending token... ");
+                    confServer.CloseConnection();
                     return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
                 }
             }
@@ -67,9 +67,10 @@ public class AuthenticationController : ControllerBase
         }
         catch (Exception ex)
         {
-            Log.Error("{0} :", nanoId.ApplicationId + "Error occured in authentication controller ===> " + ex.Message);
+            Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occured in authentication controller ===> " + ex.Message);
             return null!;
         }
+
     }
 
     //[HttpPost]

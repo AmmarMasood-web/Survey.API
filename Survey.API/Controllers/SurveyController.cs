@@ -39,12 +39,12 @@ namespace SurveyBackend.API.Controllers
                     return Unauthorized();
                 }
                 var surveys = await context.Surveys.ToListAsync();
-                Log.Information("{0} : ", nanoId.ApplicationId + "  Get Survey Response : " + JsonConvert.SerializeObject(surveys));
+                Log.Information("{0} : ", nanoId.ApplicationId + " ==>  Get Survey Response : " + JsonConvert.SerializeObject(surveys));
                 return Ok(surveys);
             }
             catch (Exception ex)
             {
-                Log.Error("{0} :", nanoId.ApplicationId + "Error occurred in GetSurvey controller:" + ex.Message);
+                Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occurred in GetSurvey controller:" + ex.Message);
                 return StatusCode(500, "Internal Server Error");
             }
         }
@@ -69,12 +69,12 @@ namespace SurveyBackend.API.Controllers
                 {
                     return NotFound();
                 }
-                Log.Information("{0} :", nanoId.ApplicationId + " Get SurveyById Response : " + JsonConvert.SerializeObject(survey));
+                Log.Information("{0} :", nanoId.ApplicationId + " ==> Get SurveyById Response : " + JsonConvert.SerializeObject(survey));
                 return Ok(survey);
             }
             catch (Exception ex)
             {
-                Log.Error("{0} :", nanoId.ApplicationId + "Error occurred in GetSurveyById controller: " + ex.Message);
+                Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occurred in GetSurveyById controller: " + ex.Message);
                 return StatusCode(statusCode: 500, "Internal Server Error");
             }
         }
@@ -88,9 +88,9 @@ namespace SurveyBackend.API.Controllers
             try
             {
                 Log.Debug("Create Survey with nano id: " + nanoId.ApplicationId);
-                Log.Information("{0} :", nanoId.ApplicationId + " Survey Request body : " + JsonConvert.SerializeObject(surveyRequest));
+                Log.Information("{0} :", nanoId.ApplicationId + " ==> Survey Request body : " + JsonConvert.SerializeObject(surveyRequest));
                 var result = await this.survey.createSurvey(surveyRequest);
-                Log.Information("{0} :", nanoId.ApplicationId + " Survey Response body : " + JsonConvert.SerializeObject(result));
+                Log.Information("{0} :", nanoId.ApplicationId + " ==> Survey Response body : " + JsonConvert.SerializeObject(result));
                 var username = User.Identity?.Name;
                 if (string.IsNullOrEmpty(username))
                 {
@@ -103,12 +103,12 @@ namespace SurveyBackend.API.Controllers
                 }
                 else
                 {
-                    return NoContent();
+                    return BadRequest();
                 }
             }
             catch (Exception ex)
             {
-                Log.Error("{0} :", nanoId.ApplicationId + "Error occurred in CreateSurvey controller: " + ex.Message);
+                Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occurred in CreateSurvey controller: " + ex.Message);
                 return StatusCode(500, "Internal Server Error");
             }
         }
