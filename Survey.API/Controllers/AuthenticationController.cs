@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using Survey.API.Classes;
 using Survey.API.CLasses;
 using Survey.API.Interfaces;
 using Survey.API.Models;
+using Survey.API.ResponseDTOs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -70,7 +72,24 @@ public class AuthenticationController : ControllerBase
             Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occured in authentication controller ===> " + ex.Message);
             return null!;
         }
+    }
 
+    [HttpGet]
+    [Route("Logout")]
+    public IActionResult Logout()
+    {
+        try
+        {
+            ConfServer confServer = new ConfServer(this._configuration);
+            Log.Debug("Logging out confServer with nano id: " + nanoId.ApplicationId);
+            confServer.CloseConnection();
+            return Ok(new Logout { message = "success" });
+        }
+        catch (Exception ex)
+        {
+            Log.Error("{0} :", nanoId.ApplicationId + " ==> Error occured in authentication controller ===> " + ex.Message);
+            return null!;
+        }
     }
 
     //[HttpPost]

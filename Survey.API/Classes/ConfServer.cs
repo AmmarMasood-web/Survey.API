@@ -28,7 +28,7 @@ public class ConfServer
     public ConfServer(IConfiguration configuration)
     {
         var confSettings = configuration.GetSection("configServer");
-        _protocol = new ConfServerProtocol(new Endpoint("confserv", (confSettings["ConfigServer_IP"])!.ToString(), Int16.Parse(confSettings["ConfigServer_PORT"]!)));
+        _protocol = new ConfServerProtocol(new Endpoint("confserv", confSettings["ConfigServer_IP"]!.ToString(), Int16.Parse(confSettings["ConfigServer_PORT"]!)));
         _ocServerURI = confSettings["OCServerURI"]!;
         _sessionId = 0;
         _passKey = confSettings["EnKey"]!;
